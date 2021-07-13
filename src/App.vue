@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Game from "./components/Game.vue";
+import Lobby from "./components/Lobby.vue";
 
 export default {
   name: 'App',
+  data() {
+    return{
+      User: {
+        loggedIn: false
+      },
+    }
+  },
   components: {
-    HelloWorld
+    Game,
+    Lobby
+  },
+  mounted () {
+    // this.axios.post('amILogged')
+    //   .then(function (response){
+    //     console.log(response.data);
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     console.log(error);
+    //   })
+    //   .then(function () {
+    //     // always executed
+    //   });
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
