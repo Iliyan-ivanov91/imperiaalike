@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import router from './router'
 import store from './store'
+import VueDragscroll from 'vue-dragscroll'
 import { auth } from './firebase'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
@@ -22,6 +23,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VTooltip);
 Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(VueDragscroll);
 
 //Axios setup. Add new config for production
 const axiosConfig = {

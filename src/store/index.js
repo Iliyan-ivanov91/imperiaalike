@@ -16,7 +16,10 @@ export default new Vuex.Store({
   state: {
     userProfile: {},
     error: null,
-    loading: false
+    loading: false,
+    map: {
+      mapTiles: [],
+    }
   },
   mutations: {
     setUserProfile(state, val) {
@@ -30,6 +33,9 @@ export default new Vuex.Store({
     },
     clearError (state) {
       state.error = null
+    },
+    setMapTiles (state, payload) {
+      state.map.mapTiles = payload
     }
   },
   actions: {
@@ -89,10 +95,16 @@ export default new Vuex.Store({
     },
     async fetchUserProfile({ commit }, user) {
       commit('setUserProfile', user)
-      router.push('/')
     },
     clearError ({commit}) {
       commit('clearError')
+    },
+    setMap ({commit}, map) {
+      commit('setLoading', true)
+      commit('setMapTiles', map)
+      setTimeout(() => {
+        commit('setLoading', false)
+      }, 2000)
     }
   },
   getters: {
@@ -101,6 +113,9 @@ export default new Vuex.Store({
     },
     error (state) {
       return state.error
+    },
+    mapTiles (state) {
+      return state.map.mapTiles
     }
   }
 })
