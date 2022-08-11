@@ -7,6 +7,11 @@ Vue.use(VueRouter)
 
 const routes = [
     {
+        path: '',
+        name: 'lobby',
+        component: () => import(/* webpackChunkName: "about" */ '../components/Lobby.vue')
+    },
+    {
         path: '/lobby',
         name: 'lobby',
         component: () => import(/* webpackChunkName: "about" */ '../components/Lobby.vue')
@@ -15,25 +20,16 @@ const routes = [
         path: '/game',
         name: 'game',
         component: () => import(/* webpackChunkName: "about" */ '../components/Game.vue'),
-        meta: {
-            requiresAuth: true
-        },
         children: [
             {
                 path: 'map',
                 name: 'map',
                 component: () => import(/* webpackChunkName: "about" */ '../components/map/Map.vue'),
-                meta: {
-                    requiresAuth: true
-                },
             },
             {
                 path: 'city',
                 name: 'city',
                 component: () => import(/* webpackChunkName: "about" */ '../components/city/City.vue'),
-                meta: {
-                    requiresAuth: true
-                },
             },
         ]
     },
